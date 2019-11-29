@@ -61,21 +61,47 @@ namespace Services
 
         public ClientDTO CreateClient(ClientDTO client)
         {
-            string id = createId(client.Name,client.LastName,client.CI);
-            Console.WriteLine($"cliente creado: \n CI: {client.CI},Nombre: {client.Name} {client.LastName}\n ID: {id}");
-            client.ClientId = id;
-            return client;
+            try
+            {
+                string id = createId(client.Name, client.LastName, client.CI);
+                Console.WriteLine($"cliente creado: \n CI: {client.CI},Nombre: {client.Name} {client.LastName}\n ID: {id}");
+                client.ClientId = id;
+                return client;
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+            
         }
 
         public ClientDTO UpdateClient(string id, ClientDTO client)
         {
-            Console.WriteLine($"cliente modificado: \n CI: {client.CI}, \n Nombre: {client.Name} {client.LastName} \n Su ID: {id}");
-            return client;
+            try
+            {
+                Console.WriteLine($"cliente modificado: \n CI: {client.CI}, \n Nombre: {client.Name} {client.LastName} \n Su ID: {id}");
+                client.Name = "Modified Name";
+                return client;
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+            
         }
 
         public void DeleteClient(string id)
         {
-            Console.WriteLine($"cliente eliminado con ID: \n CI: {id}");
+            try
+            {
+                Console.WriteLine($"cliente eliminado con ID: \n CI: {id}");
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+            
         }
 
         private string createId(string name, string lastName, string ci)
