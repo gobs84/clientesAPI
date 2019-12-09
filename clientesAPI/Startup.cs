@@ -13,6 +13,7 @@ using Microsoft.Extensions.Options;
 
 using Swashbuckle.AspNetCore.Swagger;
 using Services;
+using clientesAPI.Middlewares;
 
 namespace clientesAPI
 {
@@ -61,9 +62,8 @@ namespace clientesAPI
             }
 
             app.UseCors("AllowAll");
-
+            app.UseMiddleware<ExceptionMiddleware>();
             app.UseMvc();
-
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {

@@ -17,15 +17,15 @@ namespace Services
             cl1.Phone = 65824365;
             cl1.Address = "Atahuallpa 1031";
             cl1.Ranking = 5;
-            cl1.ClientId = "MT-00001";
+            cl1.ClientId = "MT-47623444";
             ClientDTO cl2 = new ClientDTO();
             cl2.Name = "Veimar";
             cl2.LastName = "Choque";
-            cl2.CI = "47623444";
+            cl2.CI = "63695635";
             cl2.Phone = 54325245;
             cl2.Address = "Atahuallpa 1031";
             cl2.Ranking = 3;
-            cl2.ClientId = "VC-00002";
+            cl2.ClientId = "VC-63695635";
             return new List<ClientDTO>() {cl1, cl2};
         }
         
@@ -39,15 +39,15 @@ namespace Services
             cl1.Phone = 65824365;
             cl1.Address = "Atahuallpa 1031";
             cl1.Ranking = 5;
-            cl1.ClientId = "MT-00001";
+            cl1.ClientId = "MT-47623444";
             ClientDTO cl2 = new ClientDTO();
             cl2.Name = "Veimar";
             cl2.LastName = "Choque";
-            cl2.CI = "47623444";
+            cl2.CI = "63695635";
             cl2.Phone = 54325245;
             cl2.Address = "Atahuallpa 1031";
             cl2.Ranking = 3;
-            cl2.ClientId = "VC-00002";
+            cl2.ClientId = "VC-63695635";
             if (id==cl1.ClientId)
             {
                 cl = cl1;
@@ -80,8 +80,10 @@ namespace Services
         {
             try
             {
+                string nid = createId(client.Name, client.LastName, client.CI);
                 Console.WriteLine($"cliente modificado: \n CI: {client.CI}, \n Nombre: {client.Name} {client.LastName} \n Su ID: {id}");
                 client.Name = "Modified Name";
+                client.ClientId = nid;
                 return client;
             }
             catch (System.Exception)
@@ -95,7 +97,8 @@ namespace Services
         {
             try
             {
-                Console.WriteLine($"cliente eliminado con ID: \n CI: {id}");
+                //Console.WriteLine($"cliente eliminado con ID: \n CI: {id}");
+                throw new ArgumentNullException("soy un error");
             }
             catch (System.Exception)
             {
