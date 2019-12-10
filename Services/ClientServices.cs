@@ -68,12 +68,11 @@ namespace Services
                 client.ClientId = id;
                 return client;
             }
-            catch (System.Exception)
+            catch (ServicesException ex)
             {
-
-                throw;
+                throw ex;
             }
-            
+
         }
 
         public ClientDTO UpdateClient(string id, ClientDTO client)
@@ -86,23 +85,24 @@ namespace Services
                 client.ClientId = nid;
                 return client;
             }
-            catch (System.Exception)
+            catch (ServicesException ex)
             {
-                throw;
+                throw ex;
             }
-            
+
         }
 
         public void DeleteClient(string id)
         {
             try
             {
-                //Console.WriteLine($"cliente eliminado con ID: \n CI: {id}");
-                throw new ArgumentNullException("soy un error");
+                Console.WriteLine($"cliente eliminado con ID: \n CI: {id}");
+                int a = 0;
+                int b = 1 / a;
             }
-            catch (System.Exception)
+            catch (ServicesException ex)
             {
-                throw;
+                throw ex;
             }
             
         }

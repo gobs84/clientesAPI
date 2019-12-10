@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
+using Services;
 
 namespace clientesAPI.Middlewares
 {
@@ -31,13 +32,25 @@ namespace clientesAPI.Middlewares
 
         private Task HandleExceptionAsync(HttpContext httpContext, Exception err)
         {
+            int statusCode = getCode(err.InnerException);
             var errorObj = new
             {
-                code = err.HResult,
+                code = statusCode,
                 message = err.Message
             };
+            httpContext.Response.StatusCode = statusCode;
             return httpContext.Response.WriteAsync(JsonConvert.SerializeObject(errorObj));
         }
+
+        private static int getCode(Exception ex)
+        {
+            if (ex.GetType() == typeof(ServicesException))
+            {
+                return ((ServicesException)ex).code;
+            }
+            return 500;
+        }
+
     }
 
     // Extension method used to add the middleware to the HTTP request pipeline.
