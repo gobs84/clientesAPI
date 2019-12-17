@@ -32,13 +32,14 @@ namespace clientesAPI.Middlewares
 
         private Task HandleExceptionAsync(HttpContext httpContext, Exception err)
         {
-            int statusCode = getCode(err.InnerException);
+            int code1 = getCode(err);
+            httpContext.Response.ContentType = "application/json";
             var errorObj = new
             {
-                code = statusCode,
+                code = code1,
                 message = err.Message
             };
-            httpContext.Response.StatusCode = statusCode;
+            httpContext.Response.StatusCode = code1;
             return httpContext.Response.WriteAsync(JsonConvert.SerializeObject(errorObj));
         }
 
