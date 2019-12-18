@@ -52,13 +52,13 @@ namespace Services
         {
             try
             {
-                if (String.IsNullOrEmpty(client.Name) | String.IsNullOrEmpty(client.LastName) | String.IsNullOrEmpty(client.CI))
-                {
-                    throw new ServicesException("Client Name, Lastname or CI is empty", 400);
-                }
-                else if (client == null)
+                if (client == null)
                 {
                     throw new ServicesException("Client data is null", 400);
+                }
+                else if (String.IsNullOrEmpty(client.Name) | String.IsNullOrEmpty(client.LastName) | String.IsNullOrEmpty(client.CI))
+                {
+                    throw new ServicesException("Client Name, Lastname or CI is empty", 400);
                 }
                 else
                 {
@@ -86,13 +86,13 @@ namespace Services
                 ClientDTO clientfinded = clients.Find(x => x.ClientId == id);
                 if (clientfinded != null)
                 {
-                    if (String.IsNullOrEmpty(client.Name) | String.IsNullOrEmpty(client.LastName) | String.IsNullOrEmpty(client.CI))
-                    {
-                        throw new ServicesException("Client Name, Lastname or CI is empty", 400);
-                    }
-                    else if (client == null)
+                    if (client == null)
                     {
                         throw new ServicesException("Client data is null", 400);
+                    }
+                    else if (String.IsNullOrEmpty(client.Name) | String.IsNullOrEmpty(client.LastName) | String.IsNullOrEmpty(client.CI))
+                    {
+                        throw new ServicesException("Client Name, Lastname or CI is empty", 400);
                     }
                     else
                     {
