@@ -19,15 +19,9 @@ namespace clientesAPI
 {
     public class Startup
     {
-        public Startup(IHostingEnvironment env)
+        public Startup(IConfiguration configuration)
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: false, reloadOnChange: true)
-                .AddEnvironmentVariables();
-            Configuration = builder.Build();
-
-            Console.WriteLine("ENV ===> " + $"appsettings.{env.EnvironmentName}.json");
+            Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
